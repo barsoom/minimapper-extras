@@ -25,17 +25,17 @@ describe Minimapper::Entity::SerializedAssociation do
   end
 
   it "fills the associated entity using data in entity_attributes" do
-    address = Customer.new(address_attributes: { street: "Street 55" }).address
+    address = Customer.new(:address_attributes => { :street => "Street 55" }).address
     address.street.should == "Street 55"
   end
 
   it "memoizes the associated entity" do
-    customer = Customer.new(address_attributes: { street: "Street 55" })
+    customer = Customer.new(:address_attributes => { :street => "Street 55" })
     customer.address.should == customer.address
   end
 
   it "can use a specified entity type" do
-    customer = Customer.new(visit_address_attributes: { street: "Street 66" })
+    customer = Customer.new(:visit_address_attributes => { :street => "Street 66" })
     customer.visit_address.street.should == "Street 66"
   end
 end
