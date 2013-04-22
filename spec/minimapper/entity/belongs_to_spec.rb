@@ -20,7 +20,7 @@ describe Minimapper::Entity::BelongsTo do
 
   it "assigns id when assigning entity" do
     customer = Customer.new
-    balloon = Balloon.new(id: 123)
+    balloon = Balloon.new(:id => 123)
     customer.balloon = balloon
     customer.balloon_id.should == 123
   end
@@ -42,7 +42,7 @@ describe Minimapper::Entity::BelongsTo do
 
     # Loaded entity, also sets id.
     customer = Customer.new
-    balloon = Balloon.new(id: 123)
+    balloon = Balloon.new(:id => 123)
     customer.balloon = balloon
     customer.balloon_id.should == 123  # Sanity.
     customer.balloon.should == balloon
@@ -50,7 +50,7 @@ describe Minimapper::Entity::BelongsTo do
     # Loaded entity without id.
     # NOTE: a mapper won't see the balloon.
     customer = Customer.new
-    balloon = Balloon.new(id: nil)
+    balloon = Balloon.new(:id => nil)
     customer.balloon = balloon
     customer.balloon_id.should be_nil
     customer.balloon.should == balloon
