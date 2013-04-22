@@ -3,7 +3,7 @@
 
 # Minimapper::Extras
 
-Extra tools for minimapper.
+Extra tools for [minimapper](https://github.com/joakimk/minimapper).
 
 ## Installation
 
