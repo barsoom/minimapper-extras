@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#
+# Command to run the specs the correct way when triggered from the turbux vim plugin.
+
+path = ARGV.first
+command = "rspec --color --tty #{path}"
+
+exit(1) unless system(command)
