@@ -1,3 +1,6 @@
+[![Build Status](https://secure.travis-ci.org/barsoom/minimapper-extras.png)](http://travis-ci.org/barsoom/minimapper-extras)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/barsoom/minimapper-extras)
+
 # Minimapper::Extras
 
 Extra tools for minimapper.
