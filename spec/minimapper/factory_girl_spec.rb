@@ -45,7 +45,7 @@ describe CreateThroughRepositoryStrategy do
   it "raises if the entity isn't valid after create" do
     entity.errors.add :base, "some error"
     location_mapper.stub(:create => false)
-    -> {
+    lambda {
       CreateThroughRepositoryStrategy.new.result(evaluation)
     }.should raise_error("Can't create invalid record: some error")
   end
