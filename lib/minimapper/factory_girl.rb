@@ -1,4 +1,5 @@
 require "attr_extras"
+require "backports/1.9.1/kernel/public_send"
 
 class CreateThroughRepositoryStrategy
   def result(evaluation)
@@ -34,8 +35,8 @@ class CreateThroughRepositoryStrategy
 
     def create_dependencies
       associated_entity_names.each do |name|
-        dependency_entity = self.class.new(entity.send(name)).create
-        entity.send("#{name}=", dependency_entity)
+        dependency_entity = self.class.new(entity.public_send(name)).create
+        entity.public_send("#{name}=", dependency_entity)
       end
     end
 
