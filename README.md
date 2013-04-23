@@ -23,6 +23,32 @@ Or install it yourself as:
 
 For now, see the specs. TODO: Write docs.
 
+## Custom FactoryGirl strategy
+
+Add this to your spec_helper after loading FactoryGirl:
+
+    require "minimapper/factory_girl"
+
+It changes the create strategy used by FactoryGirl to make it compatible with minimapper.
+
+So far it only supports saving single entities and belongs_to associations.
+
+It assumes you can access your mappers though something like "Repository.employees". You can override that by
+changing CreateThroughRepositoryStrategy::Create#mapper_with_name.
+
+It also assumes the model has accessors for related objects, we use the "minimapper/entity/belongs_to" to do this.
+
+Example factory definition:
+
+    require "customer"
+
+    FactoryGirl.define do
+      factory :order do
+        customer { FactoryGirl.build(:customer) }
+        description "ref. 123"
+      end
+    end
+
 ## Contributing
 
 1. Fork it
