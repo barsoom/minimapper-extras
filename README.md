@@ -23,6 +23,26 @@ Or install it yourself as:
 
 For now, see the specs. TODO: Write docs.
 
+## Convertions
+
+Additional attribute convertions. See [lib/minimapper/entity/conversions.rb](https://github.com/barsoom/minimapper-extras/blob/master/lib/minimapper/entity/conversions.rb) for a full list.
+
+    require "minimapper/entity/conversions"
+
+    class User
+      include Minimapper::Entity
+
+      attribute :registered_on, :date
+      attribute :other
+    end
+
+    user = User.new
+    user.registered_on = "2001-01-01"
+    user.registered_on # => Mon, 01 Jan 2001
+
+    user.other = "2001-01-01"
+    user.other # => "2001-01-01"
+
 ## Custom FactoryGirl strategy
 
 Add this to your spec_helper after loading FactoryGirl:
