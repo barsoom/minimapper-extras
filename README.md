@@ -25,7 +25,7 @@ For now, see the specs. TODO: Write docs.
 
 ## Convertions
 
-Additional attribute convertions. See [lib/minimapper/entity/conversions.rb](https://github.com/barsoom/minimapper-extras/blob/master/lib/minimapper/entity/conversions.rb) for a full list.
+Additional attribute conversions. See [lib/minimapper/entity/conversions.rb](https://github.com/barsoom/minimapper-extras/blob/master/lib/minimapper/entity/conversions.rb) for a full list.
 
     require "minimapper/entity/conversions"
 
