@@ -2,6 +2,7 @@ require "spec_helper"
 require "minimapper/mapper/has_many_association"
 require "minimapper/entity"
 require "minimapper/entity/belongs_to"
+require "minimapper/entity/has_many"
 
 class Contact
   include Minimapper::Entity
@@ -14,11 +15,7 @@ end
 class Customer
   include Minimapper::Entity
 
-  # TODO: add macro
-  attr_accessor :contacts
-  def contacts
-    @contacts || []
-  end
+  has_many :contacts
 end
 
 describe Minimapper::Mapper::HasManyAssociation do
