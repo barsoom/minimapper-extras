@@ -35,8 +35,12 @@ class CreateThroughRepositoryStrategy
 
     def create_dependencies
       associated_entity_names.each do |name|
-        dependency_entity = self.class.new(entity.public_send(name)).create
-        entity.public_send("#{name}=", dependency_entity)
+        associated_entity = entity.public_send(name)
+
+        if associated_entity
+          dependency_entity = self.class.new(associated_entity).create
+          entity.public_send("#{name}=", dependency_entity)
+        end
       end
     end
 

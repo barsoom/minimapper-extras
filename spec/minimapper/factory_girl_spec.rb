@@ -68,4 +68,11 @@ describe CreateThroughRepositoryStrategy, "when there are belongs_to association
     evaluation = mock(:object => order)
     CreateThroughRepositoryStrategy.new.result(evaluation)
   end
+
+  it "does not create dependencies when not defined" do
+    order = Order.new(:payment => nil)
+    order_mapper.should_receive(:create).ordered.with(order).and_return(true)
+    evaluation = mock(:object => order)
+    CreateThroughRepositoryStrategy.new.result(evaluation)
+  end
 end
