@@ -20,7 +20,9 @@ class CreateThroughRepositoryStrategy
       # "customer { FactoryGirl.build(:customer) }" in factories.
       create_dependencies
 
-      if mapper_with_name(mapper_name).create(entity)
+      if entity.persisted?
+        entity
+      elsif mapper_with_name(mapper_name).create(entity)
         entity
       else
         errors = entity.errors.full_messages.join(", ")
