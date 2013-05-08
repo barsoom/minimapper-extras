@@ -77,7 +77,7 @@ describe CreateThroughRepositoryStrategy, "when there are belongs_to association
   end
 
   it "does not create an entity when it's already persisted" do
-    payment = Payment.new(id: 1)
+    payment = Payment.new(:id => 1)
     order = Order.new(:payment => payment)
     payment_mapper.should_not_receive(:create)
     order_mapper.should_receive(:create).ordered.with(order).and_return(true)
