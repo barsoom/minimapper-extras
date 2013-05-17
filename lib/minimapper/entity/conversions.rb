@@ -9,7 +9,7 @@ end
 
 class ToBoolean
   def convert(value)
-    !!value
+    value && value != "0"
   end
 end
 

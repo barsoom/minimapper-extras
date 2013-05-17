@@ -19,5 +19,7 @@ describe "Convertions" do
     User.new(:flagged => "yep").flagged.should eq(true)
     User.new(:flagged => nil).flagged.should be_nil
     User.new(:flagged => false).flagged.should eq(false)
+    User.new(:flagged => "1").flagged.should eq(true)
+    User.new(:flagged => "0").flagged.should eq(false)
   end
 end
