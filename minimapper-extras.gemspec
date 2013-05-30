@@ -12,7 +12,12 @@ Gem::Specification.new do |spec|
   spec.homepage      = ""
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
+  # We bundle this gem within the app, having this leads
+  # to git errors when deploying.
+  if File.exists?(".git")
+    spec.files         = `git ls-files`.split($/)
+  end
+
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]

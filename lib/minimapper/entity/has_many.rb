@@ -3,18 +3,30 @@ require "minimapper/entity"
 module Minimapper
   module Entity
     module HasMany
-      def has_many(name)
+      def has_many(name, opts = {})
+        serialize = opts.fetch(:serialize, false)
+
         attr_writer name
 
-        define_method(name) do
-          # @foo ||= []
-          ivar = instance_variable_get("@#{name}")
-
-          if ivar
-            ivar
-          else
-            instance_variable_set("@#{name}", [])
+        if serialize
+          setup_has_many(name) do
+            attributes = send("#{name}_attributes")
+            entity_class = name.to_s.singularize.camelcase.constantize
+            (attributes || []).map { |attr| entity_class.new(attr) }
           end
+        else
+          setup_has_many(name) { [] }
+        end
+      end
+
+      private
+
+      def setup_has_many(name, &data)
+        # Basically does: @thename ||= data.call
+        # The data block is evaluated in the instance context.
+        define_method(name) do
+          instance_variable_get("@#{name}") ||
+            instance_variable_set("@#{name}", instance_eval(&data))
         end
       end
     end
