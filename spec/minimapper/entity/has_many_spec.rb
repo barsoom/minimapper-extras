@@ -13,7 +13,7 @@ class Customer
   has_many :cars
 
   attribute :addresses_attributes
-  has_many :addresses, serialize: true
+  has_many :addresses, :serialize => true
 end
 
 describe Minimapper::Entity::HasMany do
