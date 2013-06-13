@@ -25,6 +25,6 @@ module Minimapper
   end
 end
 
-module Minimapper::Entity::Attributes
+module Minimapper::Entity::Attributes::ClassMethods
   include Minimapper::Entity::BelongsTo
 end

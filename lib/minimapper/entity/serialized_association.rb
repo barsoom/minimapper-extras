@@ -24,7 +24,7 @@ module Minimapper
       end
     end
 
-    module Attributes
+    module Attributes::ClassMethods
       include SerializedAssociation
     end
   end
