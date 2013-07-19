@@ -9,8 +9,11 @@ module Minimapper
         attr_writer name
 
         if serialize
+          attribute_name = "#{name}_attributes"
+          attribute attribute_name
+
           setup_has_many(name) do
-            attributes = send("#{name}_attributes")
+            attributes = send(attribute_name)
             entity_class = name.to_s.singularize.camelcase.constantize
             (attributes || []).map { |attr| entity_class.new(attr) }
           end

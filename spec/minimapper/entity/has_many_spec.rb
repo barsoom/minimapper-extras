@@ -12,7 +12,6 @@ class Customer
 
   has_many :cars
 
-  attribute :addresses_attributes
   has_many :addresses, :serialize => true
 end
 

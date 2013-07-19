@@ -6,8 +6,10 @@ module Minimapper
   module Entity
     module SerializedAssociation
       def serialized_association(name, entity_class_or_proc = nil)
+        attribute_name = "#{name}_attributes"
+        attribute attribute_name
         define_method(name) do                                          # def foo
-          attributes = public_send("#{name}_attributes") || {}          #  attributes = foo_attributes
+          attributes = public_send(attribute_name) || {}                #  attributes = foo_attributes
           entity = instance_variable_get("@#{name}")                    #  entity = @foo
 
           if entity_class_or_proc.is_a?(Proc)

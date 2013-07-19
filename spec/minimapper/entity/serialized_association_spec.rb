@@ -26,9 +26,6 @@ class Customer
   include Minimapper::Entity
 
   attribute :name
-  attribute :address_attributes
-  attribute :visit_address_attributes
-  attribute :custom_address_attributes
 
   serialized_association :address
   serialized_association :visit_address, Address
