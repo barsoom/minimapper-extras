@@ -1,5 +1,5 @@
 module Minimapper
   module Extras
-    VERSION = "0.2.0"
+    VERSION = "0.3.0"
   end
 end
