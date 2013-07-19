@@ -31,8 +31,5 @@ Gem::Specification.new do |spec|
 
   # We can't assume that everything in this gem needs activemodel, but we
   # need it to run all of the specs.
-  #
-  # As we still support 1.8.x. rubies this needs to be an old version
-  # than 4.0 (as it requires 1.9.3+).
-  spec.add_development_dependency "activemodel", "< 4.0"
+  spec.add_development_dependency "activemodel"
 end
