@@ -13,5 +13,12 @@ class ToBoolean
   end
 end
 
+class ToBigDecimal
+  def convert(value)
+    BigDecimal(value)
+  end
+end
+
 Minimapper::Entity::Convert.register_converter(:date, ToDate.new)
 Minimapper::Entity::Convert.register_converter(:boolean, ToBoolean.new)
+Minimapper::Entity::Convert.register_converter(:big_decimal, ToBigDecimal.new)

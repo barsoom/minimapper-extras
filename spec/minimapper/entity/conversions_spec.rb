@@ -6,6 +6,7 @@ class User
 
   attribute :signed_up_on, :date
   attribute :flagged, :boolean
+  attribute :amount, :big_decimal
 end
 
 describe "Convertions" do
@@ -21,5 +22,10 @@ describe "Convertions" do
     User.new(:flagged => false).flagged.should eq(false)
     User.new(:flagged => "1").flagged.should eq(true)
     User.new(:flagged => "0").flagged.should eq(false)
+  end
+
+  it "can convert big decimals" do
+    User.new(amount: "500").amount.should == BigDecimal.new(500)
+    User.new(amount: "500.23").amount.should == BigDecimal.new("500.23")
   end
 end
