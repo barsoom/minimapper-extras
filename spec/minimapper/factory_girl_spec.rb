@@ -30,8 +30,8 @@ end
 
 describe CreateThroughRepositoryStrategy do
   let(:entity) { Location.new }
-  let(:location_mapper) { mock }
-  let(:evaluation) { mock(:object => entity) }
+  let(:location_mapper) { double }
+  let(:evaluation) { double(:object => entity) }
 
   before do
     Repository.stub(:locations).and_return(location_mapper)
@@ -52,8 +52,8 @@ describe CreateThroughRepositoryStrategy do
 end
 
 describe CreateThroughRepositoryStrategy, "when there are belongs_to associations" do
-  let(:payment_mapper) { mock }
-  let(:order_mapper) { mock }
+  let(:payment_mapper) { double }
+  let(:order_mapper) { double }
 
   before do
     Repository.stub(:orders => order_mapper)
@@ -65,14 +65,14 @@ describe CreateThroughRepositoryStrategy, "when there are belongs_to association
     order = Order.new(:payment => payment)
     payment_mapper.should_receive(:create).ordered.with(payment).and_return(true)
     order_mapper.should_receive(:create).ordered.with(order).and_return(true)
-    evaluation = mock(:object => order)
+    evaluation = double(:object => order)
     CreateThroughRepositoryStrategy.new.result(evaluation)
   end
 
   it "does not create dependencies when not defined" do
     order = Order.new(:payment => nil)
     order_mapper.should_receive(:create).ordered.with(order).and_return(true)
-    evaluation = mock(:object => order)
+    evaluation = double(:object => order)
     CreateThroughRepositoryStrategy.new.result(evaluation)
   end
 
@@ -81,7 +81,7 @@ describe CreateThroughRepositoryStrategy, "when there are belongs_to association
     order = Order.new(:payment => payment)
     payment_mapper.should_not_receive(:create)
     order_mapper.should_receive(:create).ordered.with(order).and_return(true)
-    evaluation = mock(:object => order)
+    evaluation = double(:object => order)
     CreateThroughRepositoryStrategy.new.result(evaluation)
   end
 end

@@ -21,9 +21,9 @@ end
 describe Minimapper::Mapper::HasManyAssociation do
   let(:contact) { Contact.new(:name => "Joe", :id => 1) }
   let(:customer) { Customer.new(:id => 1, :contacts => [ contact ]) }
-  let(:repository) { mock(:contacts => contacts_mapper) }
-  let(:customer_mapper) { mock(:find => customer, :repository => repository) }
-  let(:contacts_mapper) { mock }
+  let(:repository) { double(:contacts => contacts_mapper) }
+  let(:customer_mapper) { double(:find => customer, :repository => repository) }
+  let(:contacts_mapper) { double }
 
   it "updates changed associated entities" do
     contacts_mapper.should_receive(:update).with(contact)
