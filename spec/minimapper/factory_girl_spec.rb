@@ -1,3 +1,5 @@
+require "spec_helper"
+
 FactoryGirl = Class.new do
   def self.register_strategy(name, klass)
   end
