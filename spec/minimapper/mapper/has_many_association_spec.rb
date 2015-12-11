@@ -19,14 +19,14 @@ class Customer
 end
 
 describe Minimapper::Mapper::HasManyAssociation do
-  let(:contact) { Contact.new(:name => "Joe", :id => 1) }
-  let(:customer) { Customer.new(:id => 1, :contacts => [ contact ]) }
-  let(:repository) { double(:contacts => contacts_mapper) }
-  let(:customer_mapper) { double(:find => customer, :repository => repository) }
+  let(:contact) { Contact.new(name: "Joe", id: 1) }
+  let(:customer) { Customer.new(id: 1, contacts: [ contact ]) }
+  let(:repository) { double(contacts: contacts_mapper) }
+  let(:customer_mapper) { double(find: customer, repository: repository) }
   let(:contacts_mapper) { double }
 
   it "updates changed associated entities" do
-    contacts_mapper.should_receive(:update).with(contact)
+    expect(contacts_mapper).to receive(:update).with(contact)
     has_many_association = described_class.new(customer_mapper, customer, "contacts", "customer")
     has_many_association.persist_changes
   end
@@ -34,16 +34,16 @@ describe Minimapper::Mapper::HasManyAssociation do
   it "creates new associated entities and assigns the belongs_to association" do
     contact.id = nil
 
-    contacts_mapper.should_receive(:create).with(contact)
+    expect(contacts_mapper).to receive(:create).with(contact)
     has_many_association = described_class.new(customer_mapper, customer, "contacts", "customer")
     has_many_association.persist_changes
-    contact.customer.should == customer
+    expect(contact.customer).to eq customer
   end
 
   it "removes associated entities that no longer exist" do
-    customer_mapper.stub(:find => Customer.new(:id => 1, :contacts => [ contact ]))
+    allow(customer_mapper).to receive(:find).and_return(Customer.new(id: 1, contacts: [ contact ]))
     customer.contacts = []
-    contacts_mapper.should_receive(:delete).with(contact)
+    expect(contacts_mapper).to receive(:delete).with(contact)
     has_many_association = described_class.new(customer_mapper, customer, "contacts", "customer")
     has_many_association.persist_changes
   end

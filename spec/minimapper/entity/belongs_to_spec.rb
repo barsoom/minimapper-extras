@@ -15,21 +15,21 @@ describe Minimapper::Entity::BelongsTo do
   it "defines an _id attribute" do
     customer = Customer.new
     customer.balloon_id = 123
-    customer.attributes.should include(:balloon_id)
+    expect(customer.attributes).to include(:balloon_id)
   end
 
   it "assigns id when assigning entity" do
     customer = Customer.new
-    balloon = Balloon.new(:id => 123)
+    balloon = Balloon.new(id: 123)
     customer.balloon = balloon
-    customer.balloon_id.should == 123
+    expect(customer.balloon_id).to eq 123
   end
 
   it "provides an entity writer" do
     customer = Customer.new
     balloon = Balloon.new
     customer.balloon = balloon
-    customer.balloon.should == balloon
+    expect(customer.balloon).to eq balloon
   end
 
   # The mapper should load the record.
@@ -42,23 +42,23 @@ describe Minimapper::Entity::BelongsTo do
 
     # Loaded entity, also sets id.
     customer = Customer.new
-    balloon = Balloon.new(:id => 123)
+    balloon = Balloon.new(id: 123)
     customer.balloon = balloon
-    customer.balloon_id.should == 123  # Sanity.
-    customer.balloon.should == balloon
+    expect(customer.balloon_id).to eq 123  # Sanity.
+    expect(customer.balloon).to eq balloon
 
     # Loaded entity without id.
     # NOTE: a mapper won't see the balloon.
     customer = Customer.new
-    balloon = Balloon.new(:id => nil)
+    balloon = Balloon.new(id: nil)
     customer.balloon = balloon
-    customer.balloon_id.should be_nil
-    customer.balloon.should == balloon
+    expect(customer.balloon_id).to be_nil
+    expect(customer.balloon).to eq balloon
 
     # No id, no entity.
     customer = Customer.new
     customer.balloon = nil
     customer.balloon_id = nil
-    customer.balloon.should be_nil
+    expect(customer.balloon).to be_nil
   end
 end

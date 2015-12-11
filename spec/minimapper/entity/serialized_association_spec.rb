@@ -35,28 +35,28 @@ end
 describe Minimapper::Entity::SerializedAssociation do
   it "returns an empty associated entity for a new instance" do
     address = Customer.new.address
-    address.should be_kind_of(Address)
-    address.attributes.should == {}
+    expect(address).to be_kind_of(Address)
+    expect(address.attributes).to be_empty
   end
 
   it "fills the associated entity using data in entity_attributes" do
-    address = Customer.new(:address_attributes => { :street => "Street 55" }).address
-    address.street.should == "Street 55"
+    address = Customer.new(address_attributes: { street: "Street 55" }).address
+    expect(address.street).to eq "Street 55"
   end
 
   it "memoizes the associated entity" do
-    customer = Customer.new(:address_attributes => { :street => "Street 55" })
-    customer.address.should == customer.address
+    customer = Customer.new(address_attributes: { street: "Street 55" })
+    expect(customer.address).to eq customer.address
   end
 
   it "can use a specified entity type" do
-    customer = Customer.new(:visit_address_attributes => { :street => "Street 66" })
-    customer.visit_address.street.should == "Street 66"
+    customer = Customer.new(visit_address_attributes: { street: "Street 66" })
+    expect(customer.visit_address.street).to eq "Street 66"
   end
 
   it "can use a lambda to construct addresses" do
-    customer = Customer.new(:name => "Joe", :custom_address_attributes => { :street => "Street 66" })
-    customer.custom_address.street.should == "Street 66"
-    customer.custom_address.customer_name.should == "Joe"
+    customer = Customer.new(name: "Joe", custom_address_attributes: { street: "Street 66" })
+    expect(customer.custom_address.street).to eq "Street 66"
+    expect(customer.custom_address.customer_name).to eq "Joe"
   end
 end
