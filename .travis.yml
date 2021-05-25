@@ -1,10 +1,5 @@
 language: ruby
 rvm:
-  # 2.0 rubies
   - 2.0.0
-
-  # 1.9 rubies
-  - 1.9.3
-  - rbx-19mode
-  - jruby-19mode
-script: "script/ci"
+before_install:
+  - gem install bundler

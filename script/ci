@@ -1,4 +1,3 @@
 #!/bin/bash
 set -e
-gem install bundler
 bundle exec rake
