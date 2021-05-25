@@ -21,9 +21,9 @@ end
 describe Minimapper::Mapper::HasManyAssociation do
   let(:contact) { Contact.new(name: "Joe", id: 1) }
   let(:customer) { Customer.new(id: 1, contacts: [ contact ]) }
-  let(:repository) { double(contacts: contacts_mapper) }
-  let(:customer_mapper) { double(find: customer, repository: repository) }
-  let(:contacts_mapper) { double }
+  let(:repository) { double(:repository, contacts: contacts_mapper) }
+  let(:customer_mapper) { double(:customer_mapper, find: customer, repository: repository) }
+  let(:contacts_mapper) { double(:contacts_mapper) }
 
   it "updates changed associated entities" do
     expect(contacts_mapper).to receive(:update).with(contact)
