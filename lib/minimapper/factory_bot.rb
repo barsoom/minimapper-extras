@@ -1,5 +1,4 @@
 require "attr_extras"
-require "backports/1.9.1/kernel/public_send"
 
 class CreateThroughRepositoryStrategy
   def result(evaluation)
@@ -17,7 +16,7 @@ class CreateThroughRepositoryStrategy
 
       # Recursively creates all dependencies of this entity before
       # going on to the the entity itself. This is here so that we can do
-      # "customer { FactoryGirl.build(:customer) }" in factories.
+      # "customer { FactoryBot.build(:customer) }" in factories.
       create_dependencies
 
       if entity.persisted?
@@ -54,4 +53,4 @@ class CreateThroughRepositoryStrategy
   end
 end
 
-FactoryGirl.register_strategy(:create, CreateThroughRepositoryStrategy)
+FactoryBot.register_strategy(:create, CreateThroughRepositoryStrategy)

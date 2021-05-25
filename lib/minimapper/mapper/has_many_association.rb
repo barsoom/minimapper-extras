@@ -1,5 +1,4 @@
 require "attr_extras"
-require "backports/1.9.1/kernel/public_send"
 
 # Mapping of associated entity changes. Creates when not persisted, updates
 # when persisted and removes when it has been removed from the in-memory model.
