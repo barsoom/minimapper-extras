@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "minimapper", ">= 0.8"
   spec.add_dependency "attr_extras"
-  spec.add_dependency "backports"
   spec.add_development_dependency "bundler", ">= 2.2.10"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"

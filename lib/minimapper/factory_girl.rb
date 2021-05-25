@@ -1,5 +1,4 @@
 require "attr_extras"
-require "backports/1.9.1/kernel/public_send"
 
 class CreateThroughRepositoryStrategy
   def result(evaluation)

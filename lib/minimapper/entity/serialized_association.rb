@@ -1,6 +1,4 @@
 require "minimapper/entity"
-require "backports/1.9.1/kernel/public_send"
-require "backports/1.8.7/kernel/instance_exec"
 
 module Minimapper
   module Entity
