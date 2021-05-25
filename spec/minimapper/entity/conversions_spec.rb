@@ -25,7 +25,7 @@ describe "Conversions" do
   end
 
   it "can convert big decimals" do
-    expect(User.new(amount: "500").amount).to eq BigDecimal.new(500)
-    expect(User.new(amount: "500.23").amount).to eq BigDecimal.new("500.23")
+    expect(User.new(amount: "500").amount).to eq BigDecimal(500)
+    expect(User.new(amount: "500.23").amount).to eq BigDecimal("500.23")
   end
 end
