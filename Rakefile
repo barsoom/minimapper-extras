@@ -1,8 +1,6 @@
 require "bundler/gem_tasks"
+require 'rspec/core/rake_task'
 
-desc "Run specs"
-task :spec do
-  system("bundle exec rspec #{Dir.glob("spec/**/*_spec.rb").join(' ')}") || exit(1)
-end
+RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
