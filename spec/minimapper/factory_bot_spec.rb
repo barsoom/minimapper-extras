@@ -1,13 +1,13 @@
 require "spec_helper"
 
-FactoryGirl = Class.new do
+FactoryBot = Class.new do
   def self.register_strategy(name, klass)
   end
 end
 
 Repository = Class.new
 
-require "minimapper/factory_girl"
+require "minimapper/factory_bot"
 require "minimapper/entity"
 require "minimapper/entity/belongs_to"
 
@@ -32,8 +32,8 @@ end
 
 describe CreateThroughRepositoryStrategy do
   let(:entity) { Location.new }
-  let(:location_mapper) { double }
-  let(:evaluation) { double(object: entity) }
+  let(:location_mapper) { double(:location_mapper) }
+  let(:evaluation) { double(:evaluation, object: entity) }
 
   before do
     allow(Repository).to receive(:locations).and_return(location_mapper)
@@ -54,8 +54,8 @@ describe CreateThroughRepositoryStrategy do
 end
 
 describe CreateThroughRepositoryStrategy, "when there are belongs_to associations" do
-  let(:payment_mapper) { double }
-  let(:order_mapper) { double }
+  let(:payment_mapper) { double(:payment_mapper) }
+  let(:order_mapper) { double(:order_mapper) }
 
   before do
     allow(Repository).to receive(:orders).and_return(order_mapper)
@@ -83,7 +83,7 @@ describe CreateThroughRepositoryStrategy, "when there are belongs_to association
     order = Order.new(payment: payment)
     expect(payment_mapper).not_to receive(:create)
     expect(order_mapper).to receive(:create).ordered.with(order).and_return(true)
-    evaluation = double(object: order)
+    evaluation = double(:evaluation, object: order)
     CreateThroughRepositoryStrategy.new.result(evaluation)
   end
 end
