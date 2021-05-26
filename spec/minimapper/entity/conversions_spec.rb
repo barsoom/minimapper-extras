@@ -1,4 +1,3 @@
-require "spec_helper"
 require "minimapper/entity/conversions"
 
 class User

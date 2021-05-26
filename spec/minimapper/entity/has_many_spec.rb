@@ -1,4 +1,3 @@
-require "spec_helper"
 require "minimapper/entity/has_many"
 
 class Address

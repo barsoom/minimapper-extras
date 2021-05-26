@@ -1,4 +1,3 @@
-require "spec_helper"
 require "minimapper/mapper/has_many_association"
 require "minimapper/entity"
 require "minimapper/entity/belongs_to"

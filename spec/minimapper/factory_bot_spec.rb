@@ -1,5 +1,3 @@
-require "spec_helper"
-
 FactoryBot = Class.new do
   def self.register_strategy(name, klass)
   end

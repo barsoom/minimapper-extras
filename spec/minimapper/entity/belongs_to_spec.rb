@@ -1,4 +1,3 @@
-require "spec_helper"
 require "minimapper/entity/belongs_to"
 
 class Balloon

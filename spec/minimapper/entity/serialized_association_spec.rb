@@ -1,4 +1,3 @@
-require "spec_helper"
 require "minimapper/entity/serialized_association"
 
 class Address
