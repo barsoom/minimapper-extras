@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
 
   # We bundle this gem within the app, having this leads
   # to git errors when deploying.
-  if File.exists?(".git")
+  if File.exist?(".git")
     spec.files         = `git ls-files`.split($/)
   end
 
