@@ -14,7 +14,7 @@ class Customer
   has_many :addresses, serialize: true
 end
 
-describe Minimapper::Entity::HasMany do
+RSpec.describe Minimapper::Entity::HasMany do
   context "with serialize: false (the default)" do
     it "defaults to an empty array" do
       expect(Customer.new.cars).to be_empty

@@ -28,7 +28,7 @@ class Location
   attribute :name
 end
 
-describe CreateThroughRepositoryStrategy do
+RSpec.describe CreateThroughRepositoryStrategy do
   let(:entity) { Location.new }
   let(:location_mapper) { double(:location_mapper) }
   let(:evaluation) { double(:evaluation, object: entity) }
@@ -51,7 +51,7 @@ describe CreateThroughRepositoryStrategy do
   end
 end
 
-describe CreateThroughRepositoryStrategy, "when there are belongs_to associations" do
+RSpec.describe CreateThroughRepositoryStrategy, "when there are belongs_to associations" do
   let(:payment_mapper) { double(:payment_mapper) }
   let(:order_mapper) { double(:order_mapper) }
 

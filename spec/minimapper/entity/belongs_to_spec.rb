@@ -10,7 +10,7 @@ class Customer
   belongs_to :balloon
 end
 
-describe Minimapper::Entity::BelongsTo do
+RSpec.describe Minimapper::Entity::BelongsTo do
   it "defines an _id attribute" do
     customer = Customer.new
     customer.balloon_id = 123

@@ -8,7 +8,7 @@ class User
   attribute :amount, :big_decimal
 end
 
-describe "Conversions" do
+RSpec.describe "Conversions" do
   it "can convert dates" do
     expect(User.new(signed_up_on: "2001-01-01").signed_up_on).to eq Date.new(2001, 1, 1)
     expect(User.new(signed_up_on: "BAD DATA").signed_up_on).to be_nil

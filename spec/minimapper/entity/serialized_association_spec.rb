@@ -31,7 +31,7 @@ class Customer
   serialized_association :custom_address, lambda { |attributes| CustomerAddress.new(self, attributes) }
 end
 
-describe Minimapper::Entity::SerializedAssociation do
+RSpec.describe Minimapper::Entity::SerializedAssociation do
   it "returns an empty associated entity for a new instance" do
     address = Customer.new.address
     expect(address).to be_kind_of(Address)

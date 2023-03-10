@@ -17,7 +17,7 @@ class Customer
   has_many :contacts
 end
 
-describe Minimapper::Mapper::HasManyAssociation do
+RSpec.describe Minimapper::Mapper::HasManyAssociation do
   let(:contact) { Contact.new(name: "Joe", id: 1) }
   let(:customer) { Customer.new(id: 1, contacts: [ contact ]) }
   let(:repository) { double(:repository, contacts: contacts_mapper) }
