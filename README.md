@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/barsoom/minimapper-extras.svg)](http://travis-ci.org/barsoom/minimapper-extras)
+[![Ruby CI](https://github.com/barsoom/minimapper-extras/actions/workflows/ci.yml/badge.svg)](https://github.com/barsoom/minimapper-extras/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/d7d9437801178ad0570b/maintainability)](https://codeclimate.com/github/barsoom/minimapper-extras/maintainability)
 
 # Minimapper::Extras
